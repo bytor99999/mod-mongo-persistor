@@ -337,7 +337,7 @@ Where
 
 ### Count
 
-Counts the number of documents within a collection
+Counts the number of documents within a collection:
 
    {
        "action": "count",
@@ -435,7 +435,7 @@ Where
 
 ### Get Collections List
 
-Returns the list of collection names in the db
+Returns the list of collection names in the db:
 
    {
        "action": "getCollections"
@@ -475,7 +475,7 @@ Where
 
 ### DB stats
 
-Returns statistics about the db
+Returns statistics about the db:
 
    {
        "action": "collectionStats",
@@ -534,7 +534,7 @@ Where
 
 ### Drop Collection
 
-Drops a collection from the db
+Drops a collection from the db:
 
    {
        "action": "dropCollection",

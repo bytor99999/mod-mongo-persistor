@@ -116,6 +116,9 @@ public class MongoPersistor extends BusModBase implements Handler<Message<JsonOb
       case "getCollections":
         getCollections(message);
         break;
+      case "dropCollection":
+        dropCollection(message);
+        break;
       case "collectionStats":
         getCollectionStats(message);
         break;
@@ -383,6 +386,25 @@ public class MongoPersistor extends BusModBase implements Handler<Message<JsonOb
     reply.putArray("collections", new JsonArray(db.getCollectionNames()
         .toArray()));
     sendOK(message, reply);
+  }
+
+  private void dropCollection(Message<JsonObject> message) {
+
+    JsonObject reply = new JsonObject();
+    String collection = getMandatoryString("collection", message);
+
+    if (collection == null) {
+      return;
+    }
+
+    DBCollection coll = db.getCollection(collection);
+
+    try {
+      coll.drop();
+      sendOK(message, reply);
+    } catch (MongoException mongoException) {
+      sendError(message, "exception thrown when attempting to drop collection: " + collection + " \n" + mongoException.getMessage());
+    }
   }
 
   private void getCollectionStats(Message<JsonObject> message) {

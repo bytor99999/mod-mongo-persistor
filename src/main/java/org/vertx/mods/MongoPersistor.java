@@ -148,11 +148,14 @@ public class MongoPersistor extends BusModBase implements Handler<Message<JsonOb
     }
     DBCollection coll = db.getCollection(collection);
     DBObject obj = jsonToDBObject(doc);
-    WriteConcern writeConcern = WriteConcern.valueOf(getOptionalStringConfig("write_concern",""));
+    WriteConcern writeConcern = WriteConcern.valueOf(getOptionalStringConfig("writeConcern",""));
+    // Backwards compatibility
+    if (writeConcern == null) {
+      writeConcern = WriteConcern.valueOf(getOptionalStringConfig("write_concern",""));
+    }
     if (writeConcern == null) {
       writeConcern = db.getWriteConcern();
     }
-    writeConcern = WriteConcern.SAFE;
     WriteResult res = coll.save(obj, writeConcern);
     if (res.getError() == null) {
       if (genID != null) {
@@ -186,7 +189,12 @@ public class MongoPersistor extends BusModBase implements Handler<Message<JsonOb
     Boolean upsert =  message.body().getBoolean("upsert",false);
     Boolean multi = message.body().getBoolean("multi",false);
     DBCollection coll = db.getCollection(collection);
-    WriteConcern writeConcern = WriteConcern.valueOf(getOptionalStringConfig("write_concern",""));
+    WriteConcern writeConcern = WriteConcern.valueOf(getOptionalStringConfig("writeConcern",""));
+    // Backwards compatibility
+    if (writeConcern == null) {
+      writeConcern = WriteConcern.valueOf(getOptionalStringConfig("write_concern",""));
+    }
+
     if (writeConcern == null) {
       writeConcern = db.getWriteConcern();
     }
@@ -371,7 +379,12 @@ public class MongoPersistor extends BusModBase implements Handler<Message<JsonOb
     }
     DBCollection coll = db.getCollection(collection);
     DBObject obj = jsonToDBObject(matcher);
-    WriteConcern writeConcern = WriteConcern.valueOf(getOptionalStringConfig("write_concern",""));
+    WriteConcern writeConcern = WriteConcern.valueOf(getOptionalStringConfig("writeConcern",""));
+    // Backwards compatibility
+    if (writeConcern == null) {
+      writeConcern = WriteConcern.valueOf(getOptionalStringConfig("write_concern",""));
+    }
+
     if (writeConcern == null) {
       writeConcern = db.getWriteConcern();
     }

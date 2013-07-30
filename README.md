@@ -103,7 +103,8 @@ If an error occurs in saving the document a reply is returned:
         "message": <message>
     }
     
-Where `message` is an error message.    
+Where
+* `message` is an error message.
 
    
 ### Update
@@ -197,7 +198,8 @@ When the find complete successfully, a reply message is sent back to the sender 
         "results": <results>
     }   
     
-Where `results` is a JSON array containing the results of the find operation. For example:
+Where
+*`results` is a JSON array containing the results of the find operation. For example:
 
     {
         "status": "ok",
@@ -227,7 +229,8 @@ If an error occurs in finding the documents a reply is returned:
         "message": <message>
     }
     
-Where `message` is an error message.
+Where
+*`message` is an error message.
 
 If you would like to paginate your result :
 
@@ -245,26 +248,6 @@ This message will retrieve second page.
 Equivalence in mongoDB:
 
 db.order.find().skip(10).limit(10)
-
-### Count
-
-Count all matching document in the database.
-
-To count a document send a JSON message to the module main address:
-
-    {
-        "action": "count",
-        "collection": <collection>,
-        "matcher": <matcher>
-    }
-
-When the count complete successfully, a reply message is sent back to the sender with the following data:
-
-    {
-         "status": "ok",
-         "count" : <number>
-    }
-
 
 #### Batching
 
@@ -349,7 +332,8 @@ If an error occurs in finding the documents a reply is returned:
         "message": <message>
     }
     
-Where `message` is an error message.
+Where
+*`message` is an error message.
 
 ### Count
 
@@ -386,7 +370,8 @@ When the count completes successfully, a reply message is sent back to the sende
         "count": <count>
     }
 
-Where `count` is the number of documents in the collection that matched the matcher.
+Where
+*`count` is the number of documents in the collection that matched the matcher.
 
 If an error occurs in finding the documents a reply is returned:
 
@@ -395,7 +380,8 @@ If an error occurs in finding the documents a reply is returned:
         "message": <message>
     }
 
-Where `message` is an error message.
+Where
+*`message` is an error message.
 
 ### Delete
 
@@ -434,7 +420,8 @@ When the find complete successfully, a reply message is sent back to the sender 
         "number": <number>
     }       
     
-Where `number` is the number of documents deleted.    
+Where
+*`number` is the number of documents deleted.
     
 If an error occurs in finding the documents a reply is returned:
 
@@ -443,7 +430,8 @@ If an error occurs in finding the documents a reply is returned:
         "message": <message>
     }
     
-Where `message` is an error message.
+Where
+*`message` is an error message.
 
 ### Get Collections List
 
@@ -472,7 +460,8 @@ When getCollections completes successfully, a reply message is sent back to the 
         ]
     }
 
-Where <listOfCollections> is a list containing each collection name in the db.
+Where
+* <listOfCollections> is a list containing each collection name in the db.
 
 If an error occurs in finding the documents a reply is returned:
 
@@ -481,7 +470,8 @@ If an error occurs in finding the documents a reply is returned:
         "message": <message>
     }
 
-Where `message` is an error message.
+Where
+* `message` is an error message.
 
 ### DB stats
 
@@ -539,7 +529,8 @@ If an error occurs in finding the documents a reply is returned:
         "message": <message>
     }
 
-Where `message` is an error message.
+Where
+* `message` is an error message.
 
 ### Drop Collection
 
@@ -579,7 +570,8 @@ If an error occurs in finding the documents a reply is returned:
         "message": <message>
     }
 
-Where `message` is an error message.
+Where
+* `message` is an error message.
 
 ### Command
 
@@ -631,5 +623,5 @@ An example for delete would be
         "action": "delete",
         "collection": <collection>,
         "matcher": <matcher>,
-        "write_concern": "SAFE"
+        "writeConcern": "SAFE"
     }

@@ -340,9 +340,9 @@ Where
 Counts the number of documents within a collection
 
    {
-       action: "count",
-       collection: <collection>,
-       matcher: <matcher>
+       "action": "count",
+       "collection": <collection>,
+       "matcher": <matcher>
    }
 
 Where:
@@ -438,7 +438,7 @@ Where
 Returns the list of collection names in the db
 
    {
-       action: "getCollections"
+       "action": "getCollections"
    }
 
 All collections within the current db will be returned if they exist.
@@ -478,8 +478,8 @@ Where
 Returns statistics about the db
 
    {
-       action: "collectionStats",
-       collection: <collection>
+       "action": "collectionStats",
+       "collection": <collection>
    }
 
 Where:
@@ -537,8 +537,8 @@ Where
 Drops a collection from the db
 
    {
-       action: "dropCollection",
-       collection: <collection>
+       "action": "dropCollection",
+       "collection": <collection>
    }
 
 Where:
